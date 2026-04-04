@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galerie – fokusliebe · Lena Funke Fotografie</title>
+  <meta name="description" content="Einblicke in die Arbeit von Lena Funke (fokusliebe) — Hochzeit, Familie, Babybauch und Neugeborene." />
+  <link rel="icon" type="image/png" href="https://lenafunke.com/wp-content/uploads/2024/04/cropped-Logo-Fokusliebe-e1712344879293-1.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens ─────────────────────────────────────────── */
+    :root {
+      --cream:       #FAF7F2;
+      --brown-deep:  #2C2416;
+      --gold:        #C4A882;
+      --beige:       #E8DDD0;
+      --brown-mid:   #8B6F47;
+      --brown-light: #D4C4B0;
+      --white:       #FFFFFF;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Lato', sans-serif;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --section-pad: clamp(80px, 10vw, 140px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--cream);
+      color: var(--brown-deep);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; width: 100%; object-fit: cover; }
+    a  { color: inherit; text-decoration: none; }
+
+    /* ─── Scroll Animations ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── Navigation ────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px clamp(24px, 5vw, 80px);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(250, 247, 242, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 var(--brown-light);
+    }
+    .nav-logo img {
+      height: 52px; width: auto;
+      filter: brightness(0);
+      transition: filter var(--transition);
+    }
+    .nav-links {
+      display: flex;
+      gap: clamp(24px, 3vw, 48px);
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--brown-deep);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+    .nav-links a.active { color: var(--gold); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      width: 26px; height: 1.5px;
+      background: var(--brown-deep);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--cream);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-style: italic;
+      color: var(--brown-deep);
+    }
+
+    /* ─── Page Header ───────────────────────────────────────────── */
+    .page-header {
+      padding: calc(80px + var(--section-pad)) clamp(24px, 6vw, 100px) clamp(48px, 6vw, 80px);
+      text-align: center;
+    }
+    .page-eyebrow {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.1;
+      color: var(--brown-deep);
+      margin-bottom: 20px;
+    }
+    .page-sub {
+      font-size: 0.95rem;
+      color: #5A4A38;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    /* ─── Filter Bar ────────────────────────────────────────────── */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 0 clamp(24px, 6vw, 100px) 52px;
+    }
+    .filter-btn {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      background: none;
+      border: 1px solid var(--brown-light);
+      padding: 9px 22px;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .filter-btn:hover {
+      border-color: var(--gold);
+      color: var(--brown-deep);
+    }
+    .filter-btn.active {
+      background: var(--brown-deep);
+      border-color: var(--brown-deep);
+      color: var(--cream);
+    }
+
+    /* ─── Gallery Grid ──────────────────────────────────────────── */
+    .gallery-section {
+      padding: 0 clamp(24px, 6vw, 100px) var(--section-pad);
+    }
+    .gallery-grid {
+      columns: 3;
+      column-gap: 4px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .grid-item {
+      break-inside: avoid;
+      margin-bottom: 4px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .grid-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.7s ease, filter 0.5s ease;
+      filter: brightness(1);
+    }
+    .grid-item:hover img {
+      transform: scale(1.04);
+      filter: brightness(0.88);
+    }
+    .grid-item-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px 18px 16px;
+      background: linear-gradient(to top, rgba(44,36,22,0.75) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .grid-item:hover .grid-item-overlay { opacity: 1; }
+    .grid-item-cat {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* hide/show filter */
+    .grid-item.hidden {
+      display: none;
+    }
+
+    /* ─── Lightbox ──────────────────────────────────────────────── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 22, 12, 0.95);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img-wrap {
+      max-width: min(90vw, 900px);
+      max-height: 90vh;
+      position: relative;
+    }
+    .lightbox-img-wrap img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 88vh;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 24px; right: 28px;
+      background: none;
+      border: none;
+      color: rgba(250,247,242,0.7);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 8px;
+      transition: color var(--transition);
+    }
+    .lightbox-close:hover { color: var(--gold); }
+    .lightbox-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: 1px solid rgba(250,247,242,0.2);
+      color: rgba(250,247,242,0.7);
+      width: 48px; height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .lightbox-arrow:hover { border-color: var(--gold); color: var(--gold); }
+    #lbPrev { left: 20px; }
+    #lbNext { right: 20px; }
+
+    /* ─── Instagram CTA ─────────────────────────────────────────── */
+    .gallery-cta {
+      text-align: center;
+      padding: 0 clamp(24px, 6vw, 100px) var(--section-pad);
+    }
+    .gallery-cta p {
+      font-size: 0.88rem;
+      color: var(--brown-mid);
+      margin-bottom: 20px;
+    }
+    .btn-filled {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 44px;
+      background: var(--brown-deep);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background var(--transition), color var(--transition);
+    }
+    .btn-filled:hover { background: var(--gold); color: var(--brown-deep); }
+
+    /* ─── Footer ────────────────────────────────────────────────── */
+    footer {
+      background: #1A1409;
+      padding: 40px clamp(24px, 6vw, 100px);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-logo img {
+      height: 56px; width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.4);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(250, 247, 242, 0.25);
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* ─── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .gallery-grid { columns: 2; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-copy { text-align: left; }
+    }
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .gallery-grid { columns: 2; }
+      #lbPrev { left: 8px; }
+      #lbNext { right: 8px; }
+    }
+    @media (max-width: 440px) {
+      .gallery-grid { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ─────────────────────────────────────────── -->
+  <nav id="navbar" class="scrolled">
+    <a href="index.html" class="nav-logo">
+      <img src="https://lenafunke.com/wp-content/uploads/2024/04/cropped-Logo-Fokusliebe-e1712344879293-1.png" alt="fokusliebe – Lena Funke Fotografie" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Leistungen</a></li>
+      <li><a href="galerie.html" class="active">Galerie</a></li>
+      <li><a href="index.html#about">Über mich</a></li>
+      <li><a href="index.html#contact">Kontakt</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#services" onclick="closeMenu()">Leistungen</a>
+    <a href="galerie.html"        onclick="closeMenu()">Galerie</a>
+    <a href="index.html#about"    onclick="closeMenu()">Über mich</a>
+    <a href="index.html#contact"  onclick="closeMenu()">Kontakt</a>
+  </div>
+
+  <!-- ─── Page Header ──────────────────────────────────────────── -->
+  <header class="page-header">
+    <span class="page-eyebrow">Galerie</span>
+    <h1 class="page-title">Einblicke in <em style="font-style:italic;color:#D8BC9A;">meine Arbeit</em></h1>
+    <p class="page-sub">Echte Momente. Echte Menschen. Echte Gefühle — festgehalten für immer.</p>
+  </header>
+
+  <!-- ─── Filter Bar ────────────────────────────────────────────── -->
+  <div class="filter-bar reveal">
+    <button class="filter-btn active" data-filter="alle">Alle</button>
+    <button class="filter-btn" data-filter="hochzeit">Hochzeit</button>
+    <button class="filter-btn" data-filter="familie">Familie</button>
+    <button class="filter-btn" data-filter="babybauch">Babybauch</button>
+    <button class="filter-btn" data-filter="neugeborene">Neugeborene</button>
+  </div>
+
+  <!-- ─── Gallery Grid ─────────────────────────────────────────── -->
+  <section class="gallery-section">
+    <div class="gallery-grid" id="galleryGrid">
+
+      <div class="grid-item reveal" data-category="hochzeit">
+        <img src="https://lenafunke.com/wp-content/uploads/2026/03/Jasmin-Florian-335-683x1024.jpg" alt="Hochzeitsfotografie" loading="lazy" />
+        <div class="grid-item-overlay"><span class="grid-item-cat">Hochzeit</span></div>
+      </div>
+
+      <div class="grid-item reveal" data-category="neugeborene">
+        <img src="https://lenafunke.com/wp-content/uploads/2025/12/Franz-123-1-683x1024.jpg" alt="Neugeborenen Fotografie" loading="lazy" />
+        <div class="grid-item-overlay"><span class="grid-item-cat">Neugeborene</span></div>
+      </div>
+
+      <div class="grid-item reveal" data-category="hochzeit">
+        <img src="https://lenafunke.com/wp-content/uploads/2026/03/Jasmin-Florian-69-1024x683.jpg" alt="Hochzeitsfotografie" loading="lazy" />
+        <div class="grid-item-overlay"><span class="grid-item-cat">Hochzeit</span></div>
+      </div>
+
+      <div class="grid-item reveal" data-category="familie">
+        <img src="https://lenafunke.com/wp-content/uploads/2025/12/Familie-Hashagen-107-683x1024.jpg" alt="Familienfotografie" loading="lazy" style="object-position: center 22%;" />
+        <div class="grid-item-overlay"><span class="grid-item-cat">Familie</span></div>
+      </div>
+
+      <div class="grid-item reveal" data-category="hochzeit">
+        <img src="https://lenafunke.com/wp-content/uploads/2026/03/Jasmin-Florian-10-683x1024.jpg" alt="Hochzeitsfotografie" loading="lazy" />
+        <div class="grid-item-overlay"><span class="grid-item-cat">Hochzeit</span></div>
+      </div>
+
+      <div class="grid-item reveal" data-category="babybauch">
+        <img src="https://lenafunke.com/wp-content/uploads/2025/12/Babybauch-Familie-Ahl-126-1-683x1024.jpg" alt="Babybauch Shooting" loading="lazy" style="object-position: center 35%;" />
+        <div class="grid-item-overlay"><span class="grid-item-cat">Babybauch</span></div>
+      </div>
+
+      <div class="grid-item reveal" data-category="hochzeit">
+        <img src="https://lenafunke.com/wp-content/uploads/2026/03/Jasmin-Florian-499-683x1024.jpg" alt="Hochzeitsfotografie" loading="lazy" />
+        <div class="grid-item-overlay"><span class="grid-item-cat">Hochzeit</span></div>
+      </div>
+
+      <div class="grid-item reveal" data-category="hochzeit">
+        <img src="https://lenafunke.com/wp-content/uploads/2026/03/Jasmin-Florian-567-683x1024.jpg" alt="Hochzeitsfotografie" loading="lazy" />
+        <div class="grid-item-overlay"><span class="grid-item-cat">Hochzeit</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Instagram CTA ────────────────────────────────────────── -->
+  <div class="gallery-cta reveal">
+    <p>Weitere aktuelle Momente findest du auf Instagram</p>
+    <a href="https://www.instagram.com/fokusliebe_fotografie" target="_blank" rel="noopener noreferrer" class="btn-filled">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="5"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      @fokusliebe_fotografie
+    </a>
+  </div>
+
+  <!-- ─── Lightbox ─────────────────────────────────────────────── -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto Vollansicht">
+    <button class="lightbox-close" id="lbClose" aria-label="Schließen">×</button>
+    <button class="lightbox-arrow" id="lbPrev" aria-label="Vorheriges Bild">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8.5 1.5L3.5 6.5l5 5"/>
+      </svg>
+    </button>
+    <div class="lightbox-img-wrap">
+      <img id="lbImg" src="" alt="" />
+    </div>
+    <button class="lightbox-arrow" id="lbNext" aria-label="Nächstes Bild">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.5 1.5l5 5-5 5"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ─── Footer ───────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="https://lenafunke.com/wp-content/uploads/2024/04/cropped-Logo-Fokusliebe-e1712344879293-1.png" alt="fokusliebe – Lena Funke Fotografie" />
+      </div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/fokusliebe_fotografie" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </div>
+      <div class="footer-copy">
+        <span>© 2025 Lena Funke Fotografie</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Nav scroll ────────────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // ── Hamburger ─────────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+      mobileMenu.classList.toggle('open', !isOpen);
+      hamburger.classList.toggle('open', !isOpen);
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    });
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Scroll reveal ─────────────────────────────────────────────
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      }),
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Filter ────────────────────────────────────────────────────
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const gridItems  = document.querySelectorAll('.grid-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        gridItems.forEach(item => {
+          const match = filter === 'alle' || item.dataset.category === filter;
+          item.classList.toggle('hidden', !match);
+        });
+      });
+    });
+
+    // ── Lightbox ──────────────────────────────────────────────────
+    const lightbox = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lbImg');
+    let visibleItems = [];
+    let lbCurrent    = 0;
+
+    function getVisible() {
+      return [...gridItems].filter(i => !i.classList.contains('hidden'));
+    }
+
+    function openLightbox(item) {
+      visibleItems = getVisible();
+      lbCurrent = visibleItems.indexOf(item);
+      lbImg.src = item.querySelector('img').src;
+      lbImg.alt = item.querySelector('img').alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+
+    function lbGo(dir) {
+      visibleItems = getVisible();
+      lbCurrent = (lbCurrent + dir + visibleItems.length) % visibleItems.length;
+      const item = visibleItems[lbCurrent];
+      lbImg.src = item.querySelector('img').src;
+      lbImg.alt = item.querySelector('img').alt;
+    }
+
+    gridItems.forEach(item => item.addEventListener('click', () => openLightbox(item)));
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbPrev').addEventListener('click', () => lbGo(-1));
+    document.getElementById('lbNext').addEventListener('click', () => lbGo(1));
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')      closeLightbox();
+      if (e.key === 'ArrowLeft')   lbGo(-1);
+      if (e.key === 'ArrowRight')  lbGo(1);
+    });
+  </script>
+</body>
+</html>
