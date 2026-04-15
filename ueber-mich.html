@@ -455,6 +455,19 @@
     .c-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brown-light); border: none; cursor: pointer; padding: 0; transition: background var(--transition), transform var(--transition); }
     .c-dot.active { background: var(--gold); transform: scale(1.5); }
 
+    /* ─── About Link ────────────────────────────────────────────── */
+    .about-link {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      border-bottom: 1px solid var(--brown-light);
+      padding-bottom: 2px;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .about-link:hover { border-color: var(--gold); color: var(--gold); }
+
     /* ─── Contact CTA ───────────────────────────────────────────── */
     #contact {
       background: linear-gradient(135deg, #2C2416 0%, #3d3020 50%, #2C2416 100%);
@@ -698,6 +711,7 @@
       <p class="intro-text reveal reveal-delay-3">
         Was mich an der Fotografie immer wieder aufs Neue bewegt? Der Moment, in dem ich euch euren Galerielink schicke. Die Reaktionen, die Sprachnachrichten, die Tränen — das ist der Grund, warum ich diesen Beruf gewählt habe. Ich halte Dinge fest, die flüchtig sind: das Lachen deines Kindes, den Blick zwischen zwei Menschen, die sich lieben, die Stille kurz vor dem Ja-Wort. Momente, die ohne eine Kamera einfach verschwinden würden.
       </p>
+      <a href="index.html#services" class="about-link reveal reveal-delay-3" style="display:inline-block;margin-top:40px;">Meine Leistungen entdecken →</a>
     </div>
   </section>
 
