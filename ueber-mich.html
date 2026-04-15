@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Familienfotografie – fokusliebe | Lena Funke</title>
-  <meta name="description" content="Familienfotografie mit Herz — einfühlsam, authentisch, für immer. Lena Funke hält eure flüchtigen Momente als Familie natürlich und unvergesslich fest." />
+  <title>Über mich – Lena Funke · fokusliebe Fotografie</title>
+  <meta name="description" content="Ich bin Lena — Fotografin aus Brome. Lerne mich und meine Philosophie kennen: Echtheit, Nähe und Sorgfalt statt inszenierter Fotos." />
   <link rel="icon" type="image/png" href="https://lenafunke.com/wp-content/uploads/2024/04/cropped-Logo-Fokusliebe-e1712344879293-1.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -47,6 +47,15 @@
 
     .section-pad { padding: var(--section-pad) clamp(24px, 6vw, 100px); }
 
+    /* ─── Placeholder helper ────────────────────────────────────── */
+    .placeholder {
+      background: rgba(196,168,130,0.25);
+      border-radius: 2px;
+      padding: 0 4px;
+      font-style: italic;
+      color: var(--brown-mid);
+    }
+
     /* ─── Scroll Animations ─────────────────────────────────────── */
     .reveal {
       opacity: 0;
@@ -61,15 +70,6 @@
     .reveal-delay-2 { transition-delay: 0.30s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
     .reveal-delay-4 { transition-delay: 0.60s; }
-
-    /* ─── Placeholder style ─────────────────────────────────────── */
-    .placeholder {
-      background: rgba(196, 168, 130, 0.25);
-      border-radius: 2px;
-      padding: 0 4px;
-      font-style: italic;
-      color: var(--brown-mid);
-    }
 
     /* ─── Navigation ────────────────────────────────────────────── */
     nav {
@@ -121,6 +121,17 @@
     .nav-links a:hover::after { width: 100%; }
     nav.scrolled .nav-links a { color: var(--brown-deep); }
 
+    /* Active nav link */
+    .nav-links a.active {
+      font-weight: 700;
+    }
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    nav.scrolled .nav-links a.active {
+      color: var(--brown-mid);
+    }
+
     /* Hamburger */
     .hamburger {
       display: none;
@@ -161,6 +172,9 @@
       font-style: italic;
       color: var(--brown-deep);
     }
+    .mobile-menu a.active {
+      color: var(--gold);
+    }
 
     /* ─── Hero ──────────────────────────────────────────────────── */
     #hero {
@@ -172,7 +186,7 @@
     .hero-bg {
       position: absolute;
       inset: -10%;
-      background: url('https://lenafunke.com/wp-content/uploads/2025/12/Familie-Hashagen-107-683x1024.jpg') center 22% / cover no-repeat;
+      background: url('https://lenafunke.com/wp-content/uploads/2026/01/Lena-1-683x1024.jpg') center 20%/cover no-repeat;
       transform: translateY(0);
       will-change: transform;
     }
@@ -226,14 +240,12 @@
       font-family: var(--font-body);
       font-size: clamp(0.9rem, 1.5vw, 1.05rem);
       font-weight: 300;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.8);
-      margin-top: 12px;
-      margin-bottom: 56px;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.75);
+      margin-top: 4px;
       opacity: 0;
       animation: fadeUp 1s ease 0.80s forwards;
     }
-    .hero-sub span { margin: 0 10px; color: var(--gold); }
 
     /* scroll indicator */
     .scroll-hint {
@@ -246,7 +258,7 @@
       align-items: center;
       gap: 8px;
       opacity: 0;
-      animation: fadeUp 1s ease 1.4s forwards;
+      animation: fadeUp 1s ease 1.2s forwards;
     }
     .scroll-line {
       width: 1px; height: 50px;
@@ -270,12 +282,13 @@
       line-height: 1.15;
       color: var(--brown-deep);
     }
-    .section-header {
-      max-width: 1200px;
-      margin: 0 auto 60px;
+    .gold-divider {
+      width: 60px; height: 1px;
+      background: var(--gold);
+      margin: 36px auto;
     }
 
-    /* ─── Intro / Philosophie ───────────────────────────────────── */
+    /* ─── Intro Section ─────────────────────────────────────────── */
     #intro {
       background: var(--cream);
       padding: var(--section-pad) clamp(24px, 6vw, 100px);
@@ -289,262 +302,180 @@
       font-family: var(--font-display);
       font-style: italic;
       font-weight: 300;
-      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
-      line-height: 1.5;
+      font-size: clamp(1.5rem, 3vw, 2.3rem);
+      line-height: 1.45;
       color: var(--brown-deep);
-      margin-bottom: 44px;
-      position: relative;
-      padding: 0 20px;
-    }
-    .intro-quote::before {
-      content: '\201C';
-      position: absolute;
-      left: -10px; top: -20px;
-      font-size: 6rem;
-      line-height: 1;
-      color: var(--gold);
-      font-family: var(--font-display);
-      font-style: italic;
-      opacity: 0.5;
+      margin-bottom: 0;
     }
     .intro-text {
       font-size: 1rem;
-      line-height: 1.85;
+      font-weight: 300;
+      line-height: 1.9;
       color: #5A4A38;
-      margin-bottom: 24px;
       text-align: left;
+      margin-bottom: 24px;
     }
-    .intro-divider {
-      width: 40px; height: 1px;
-      background: var(--gold);
-      margin: 0 auto 40px;
+    .intro-text:last-of-type {
+      margin-bottom: 0;
     }
 
-    /* ─── Ablauf ─────────────────────────────────────────────────── */
-    #ablauf {
+    /* ─── Zahlen Section ────────────────────────────────────────── */
+    #zahlen {
       background: var(--beige);
       padding: var(--section-pad) clamp(24px, 6vw, 100px);
+      text-align: center;
     }
-    .ablauf-inner {
-      max-width: 1200px;
+    .zahlen-header {
+      margin-bottom: 64px;
+    }
+    .zahlen-grid {
+      max-width: 900px;
       margin: 0 auto;
-    }
-    .steps-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
-      margin-top: 60px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
     }
-    .step-item {
-      position: relative;
-    }
-    .step-item::after {
-      content: '';
-      position: absolute;
-      top: 22px;
-      right: -20px;
-      width: 40px;
-      height: 1px;
-      background: var(--brown-light);
-    }
-    .step-item:last-child::after { display: none; }
-    .step-number {
-      font-family: var(--font-display);
-      font-weight: 300;
-      font-size: 3.5rem;
-      line-height: 1;
-      color: var(--gold);
-      opacity: 0.45;
-      margin-bottom: 16px;
-    }
-    .step-title {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 1.3rem;
-      font-weight: 400;
-      color: var(--brown-deep);
-      margin-bottom: 12px;
-      line-height: 1.25;
-    }
-    .step-text {
-      font-size: 0.88rem;
-      font-weight: 300;
-      color: #5A4A38;
-      line-height: 1.8;
-    }
-
-    /* ─── Leistungsumfang ───────────────────────────────────────── */
-    #leistung {
-      background: var(--cream);
-      padding: var(--section-pad) clamp(24px, 6vw, 100px);
-    }
-    .leistung-inner {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .leistung-list {
-      list-style: none;
-      margin-top: 44px;
-      margin-bottom: 36px;
-    }
-    .leistung-list li {
+    .zahlen-item {
+      padding: 48px 32px;
+      background: rgba(250, 247, 242, 0.55);
+      border: 1px solid rgba(196, 168, 130, 0.2);
       display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(196, 168, 130, 0.25);
-      font-size: 0.97rem;
-      font-weight: 300;
-      color: #5A4A38;
-      line-height: 1.6;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
     }
-    .leistung-list li:first-child { border-top: 1px solid rgba(196, 168, 130, 0.25); }
-    .leistung-check {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      margin-top: 1px;
-      color: var(--gold);
-    }
-    .leistung-note {
+    .zahlen-num {
       font-family: var(--font-display);
-      font-style: italic;
-      font-size: 1.15rem;
-      color: var(--brown-mid);
-      text-align: center;
-      margin-top: 16px;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1;
+      color: var(--brown-deep);
+      letter-spacing: -0.01em;
     }
-
-    /* ─── Gallery ─────────────────────────────────────────────── */
-    #gallery {
-      background: var(--beige);
-      padding: var(--section-pad) clamp(24px, 6vw, 100px);
-    }
-    .gallery-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .gallery-mosaic {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      grid-template-rows: 300px 300px;
-      gap: 4px;
-      margin-bottom: 48px;
-    }
-    .gallery-item {
-      overflow: hidden;
-      position: relative;
-    }
-    .gallery-item:nth-child(1) {
-      grid-row: 1 / 3;
-    }
-    .gallery-item:nth-child(2) {
-      grid-column: 2; grid-row: 1;
-    }
-    .gallery-item:nth-child(3) {
-      grid-column: 2; grid-row: 2;
-    }
-    .gallery-item img {
-      transition: transform 0.7s ease;
-    }
-    .gallery-item:hover img { transform: scale(1.05); }
-    .gallery-cta {
-      text-align: center;
-    }
-    .btn-filled {
-      display: inline-block;
-      padding: 16px 44px;
-      background: var(--brown-deep);
-      color: var(--cream);
+    .zahlen-label {
       font-family: var(--font-body);
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 400;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      transition: background var(--transition), color var(--transition);
+      color: var(--brown-mid);
+      line-height: 1.5;
     }
-    .btn-filled:hover { background: var(--gold); color: var(--brown-deep); }
+    .zahlen-divider {
+      width: 28px; height: 1px;
+      background: var(--gold);
+      margin: 4px auto;
+    }
 
-    /* ─── FAQ ────────────────────────────────────────────────────── */
-    #faq {
+    /* ─── Werte Section ─────────────────────────────────────────── */
+    #werte {
       background: var(--cream);
       padding: var(--section-pad) clamp(24px, 6vw, 100px);
     }
-    .faq-inner {
-      max-width: 800px;
+    .werte-header {
+      max-width: 1100px;
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+    .werte-grid {
+      max-width: 1100px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
     }
-    .faq-list {
-      margin-top: 52px;
-    }
-    .faq-item {
-      border-bottom: 1px solid rgba(196, 168, 130, 0.3);
-    }
-    .faq-item:first-child {
-      border-top: 1px solid rgba(196, 168, 130, 0.3);
-    }
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      cursor: pointer;
+    .werte-item {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 22px 0;
-      text-align: left;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+    }
+    .werte-icon {
+      width: 40px; height: 40px;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .werte-divider {
+      width: 36px; height: 1px;
+      background: var(--gold);
+      margin-bottom: 20px;
+    }
+    .werte-title {
       font-family: var(--font-display);
-      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      font-style: italic;
+      font-size: 1.55rem;
       font-weight: 400;
       color: var(--brown-deep);
-      line-height: 1.3;
-      transition: color var(--transition);
+      margin-bottom: 14px;
+      line-height: 1.2;
     }
-    .faq-question:hover { color: var(--brown-mid); }
-    .faq-icon {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      color: var(--gold);
-      transition: transform 0.35s ease;
-      position: relative;
-    }
-    .faq-icon::before,
-    .faq-icon::after {
-      content: '';
-      position: absolute;
-      background: currentColor;
-      transition: transform 0.35s ease, opacity 0.35s ease;
-    }
-    .faq-icon::before {
-      width: 14px; height: 1px;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .faq-icon::after {
-      width: 1px; height: 14px;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .faq-item.open .faq-icon::after {
-      transform: translate(-50%, -50%) rotate(90deg);
-      opacity: 0;
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.35s ease;
-    }
-    .faq-answer-inner {
-      padding: 0 0 24px;
-      font-size: 0.93rem;
+    .werte-text {
+      font-size: 0.92rem;
       font-weight: 300;
       color: #5A4A38;
       line-height: 1.85;
     }
-    .faq-item.open .faq-answer {
-      max-height: 300px;
+
+    /* ─── Ausrüstung Section ────────────────────────────────────── */
+    #ausruestung {
+      background: var(--beige);
+      padding: var(--section-pad) clamp(24px, 6vw, 100px);
+      text-align: center;
+    }
+    .ausruestung-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .ausruestung-text {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: #5A4A38;
+      margin-top: 28px;
+    }
+
+    /* ─── Testimonial ───────────────────────────────────────────── */
+    #testimonial {
+      background: var(--cream);
+      padding: var(--section-pad) clamp(24px, 6vw, 100px);
+      text-align: center;
+    }
+    .testimonial-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .testimonial-mark {
+      font-family: var(--font-display);
+      font-size: 10rem;
+      line-height: 0.7;
+      color: var(--beige);
+      position: absolute;
+      top: -20px; left: -40px;
+      user-select: none;
+      pointer-events: none;
+    }
+    .testimonial-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      line-height: 1.55;
+      color: var(--brown-deep);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 36px;
+    }
+    .testimonial-divider {
+      width: 40px; height: 1px;
+      background: var(--gold);
+      margin: 0 auto 20px;
+    }
+    .testimonial-author {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
     }
 
     /* ─── Contact CTA ───────────────────────────────────────────── */
@@ -596,7 +527,7 @@
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 44px;
+      margin-bottom: 32px;
     }
     .btn-contact-primary {
       display: inline-flex;
@@ -704,22 +635,19 @@
     }
 
     /* ─── Responsive ────────────────────────────────────────────── */
-    @media (max-width: 1000px) {
-      .steps-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px 48px;
-      }
-      .step-item::after { display: none; }
-    }
-
     @media (max-width: 900px) {
-      .gallery-mosaic {
+      .zahlen-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: 280px 220px 220px;
+        gap: 0;
+        max-width: 400px;
       }
-      .gallery-item:nth-child(1) { grid-row: 1; }
-      .gallery-item:nth-child(2) { grid-column: 1; grid-row: 2; }
-      .gallery-item:nth-child(3) { grid-column: 1; grid-row: 3; }
+      .zahlen-item {
+        border-bottom: none;
+      }
+      .werte-grid {
+        grid-template-columns: 1fr;
+        gap: 52px;
+      }
       .footer-inner { flex-direction: column; align-items: flex-start; }
       .footer-copy { text-align: left; }
     }
@@ -729,7 +657,7 @@
       .hamburger { display: flex; }
       .hero-headline { font-size: clamp(2.8rem, 12vw, 4.5rem); }
       .section-title { font-size: clamp(1.8rem, 7vw, 2.6rem); }
-      .steps-grid { grid-template-columns: 1fr; }
+      .testimonial-mark { font-size: 6rem; left: -10px; }
       .contact-btns { flex-direction: column; align-items: center; }
       .btn-contact-primary,
       .btn-contact-secondary { width: 100%; justify-content: center; }
@@ -745,8 +673,8 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html#services">Leistungen</a></li>
-      <li><a href="galerie.html">Galerie</a></li>
-      <li><a href="index.html#about">Über mich</a></li>
+      <li><a href="index.html#gallery">Galerie</a></li>
+      <li><a href="ueber-mich.html" class="active">Über mich</a></li>
       <li><a href="index.html#contact">Kontakt</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
@@ -757,8 +685,8 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html#services" onclick="closeMenu()">Leistungen</a>
-    <a href="galerie.html"  onclick="closeMenu()"><a href="galerie.html">Galerie</a>
-    <a href="index.html#about"    onclick="closeMenu()">Über mich</a>
+    <a href="index.html#gallery"  onclick="closeMenu()">Galerie</a>
+    <a href="ueber-mich.html" class="active" onclick="closeMenu()">Über mich</a>
     <a href="index.html#contact"  onclick="closeMenu()">Kontakt</a>
   </div>
 
@@ -767,228 +695,125 @@
     <div class="hero-bg" id="heroBg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">Familienfotografie</p>
+      <p class="hero-eyebrow">Über mich</p>
       <h1 class="hero-headline">
-        Flüchtige<br><em>Momente.</em>
+        Hallo, ich bin<br><em>Lena.</em>
       </h1>
-      <p class="hero-sub">
-        Einfühlsam<span>·</span>Authentisch<span>·</span>Für immer
-      </p>
+      <p class="hero-sub">Fotografin&nbsp;·&nbsp;Brome&nbsp;·&nbsp;Seit 2022</p>
     </div>
     <div class="scroll-hint">
       <div class="scroll-line"></div>
     </div>
   </section>
 
-  <!-- ─── Intro / Philosophie ──────────────────────────────── -->
+  <!-- ─── Intro Section ─────────────────────────────────────── -->
   <section id="intro">
     <div class="intro-inner">
-      <span class="section-eyebrow reveal">Meine Philosophie</span>
-      <p class="intro-quote reveal reveal-delay-1">
-        Der Moment, in dem dein Kind so ist, wie es gerade ist — den gibt es nur einmal.
+      <p class="intro-quote reveal">
+        „Ich glaube daran, dass die schönsten Fotos dann entstehen, wenn du dich wohlfühlst — nicht wenn du posierst."
       </p>
-      <div class="intro-divider reveal reveal-delay-2"></div>
+      <div class="gold-divider reveal reveal-delay-1"></div>
+      <p class="intro-text reveal reveal-delay-1">
+        Ich bin Lena — aufgewachsen und zu Hause in Brome, einem kleinen Ort in Niedersachsen. Was 2022 als Leidenschaft begann, ist seit 2025 mein Vollzeitberuf. Seitdem darf ich jeden Tag das tun, was mich wirklich erfüllt: echte Momente festhalten, die sonst vielleicht verloren gingen. Fotografie ist für mich keine Technik — sie ist eine Sprache für das, was Worte nicht ausdrücken können.
+      </p>
       <p class="intro-text reveal reveal-delay-2">
-        Kein Drehbuch. Keine Stoppuhr. Keine gestellten Posen. Nur ihr — so wie ihr seid. Zum Sonnenuntergang, an einem Spot der zu euch passt, mit einer Fotografin die selbst Mama ist und genau weiß, wie ein Familienshooting <em>nicht</em> anfühlen soll.
+        Meine Arbeitsweise ist ruhig, warmherzig und ohne Druck. Ich nehme mir bewusst Zeit, bevor wir uns zum ersten Mal vor die Kamera begeben — um zu verstehen, was euch wichtig ist, wie ihr tickt und was ihr mit nach Hause nehmen möchtet. Dieses Kennenlernen ist für mich genauso Teil des Shootings wie der Tag selbst. Je wohler ihr euch fühlt, desto echter werden eure Bilder — und genau das ist es, wofür ich brenne.
       </p>
       <p class="intro-text reveal reveal-delay-3">
-        Ich weiß, wie stressig ein „Termin mit Kindern" sein kann. Genau dieses Gefühl soll bei mir nicht entstehen. Stell es dir so vor: Eine gute Freundin kommt vorbei — und hält nebenbei eure schönsten Momente fest. Wenn die Kleinen eine Pause brauchen, machen wir eine. Und wenn es gar nicht klappt: wir verschieben. Kein Druck, kein schlechtes Gewissen.
+        Was mich an der Fotografie immer wieder aufs Neue bewegt? Der Moment, in dem ich euch euer Galerie-Link schicke. Die Reaktionen, die Sprachnachrichten, die Tränen — das ist der Grund, warum ich diesen Beruf gewählt habe. Ich halte Dinge fest, die flüchtig sind: das Lachen deines Kindes, den Blick zwischen zwei Menschen, die sich lieben, die Stille kurz vor dem Ja-Wort. Momente, die ohne eine Kamera einfach verschwinden würden.
       </p>
     </div>
   </section>
 
-  <!-- ─── Ablauf ─────────────────────────────────────────────── -->
-  <section id="ablauf">
-    <div class="ablauf-inner">
-      <div class="section-header reveal">
-        <span class="section-eyebrow">So läuft es ab</span>
-        <h2 class="section-title">Entspannt von Anfang an</h2>
+  <!-- ─── Zahlen Section ────────────────────────────────────── -->
+  <section id="zahlen">
+    <div class="zahlen-header reveal">
+      <span class="section-eyebrow">Ein paar Zahlen</span>
+    </div>
+    <div class="zahlen-grid">
+      <div class="zahlen-item reveal">
+        <span class="zahlen-num">Seit 2022</span>
+        <div class="zahlen-divider"></div>
+        <span class="zahlen-label">Fotografin mit Leidenschaft</span>
       </div>
-      <div class="steps-grid">
-        <div class="step-item reveal">
-          <div class="step-number">01</div>
-          <h3 class="step-title">Anfrage &amp; Kennenlernen</h3>
-          <p class="step-text">In einem kurzen Gespräch erzählt ihr mir von euren Wünschen, dem Alter der Kinder und euren Lieblingsplätzen. So lerne ich euch kennen, bevor das Shooting beginnt.</p>
-        </div>
-        <div class="step-item reveal reveal-delay-1">
-          <div class="step-number">02</div>
-          <h3 class="step-title">Location &amp; Timing</h3>
-          <p class="step-text">Gemeinsam finden wir den perfekten Ort und die beste Tageszeit — ob in der goldenen Stunde, im Lieblingspark oder einfach bei euch zuhause.</p>
-        </div>
-        <div class="step-item reveal reveal-delay-2">
-          <div class="step-number">03</div>
-          <h3 class="step-title">Das Shooting</h3>
-          <p class="step-text">Locker, spielerisch, ohne Druck. Die Kinder bestimmen das Tempo. Ich bin einfach dabei und halte fest, was sich natürlich entfaltet.</p>
-        </div>
-        <div class="step-item reveal reveal-delay-3">
-          <div class="step-number">04</div>
-          <h3 class="step-title">Eure Galerie</h3>
-          <p class="step-text">Alle bearbeiteten Fotos landen in eurer persönlichen Online-Galerie — bereit zum Download nach ca. 1 Woche. Analoge Prints folgen in weiteren 2–3 Wochen.</p>
-        </div>
+      <div class="zahlen-item reveal reveal-delay-1">
+        <span class="zahlen-num">2025</span>
+        <div class="zahlen-divider"></div>
+        <span class="zahlen-label">Hauptberuflich selbstständig</span>
+      </div>
+      <div class="zahlen-item reveal reveal-delay-2">
+        <span class="zahlen-num">Brome</span>
+        <div class="zahlen-divider"></div>
+        <span class="zahlen-label">Meine Heimat in Niedersachsen</span>
       </div>
     </div>
   </section>
 
-  <!-- ─── Leistungsumfang ───────────────────────────────────── -->
-  <section id="leistung">
-    <div class="leistung-inner">
-      <div class="section-header reveal" style="margin-bottom: 0;">
-        <span class="section-eyebrow">Leistungsumfang</span>
-        <h2 class="section-title">Was ihr bekommt</h2>
+  <!-- ─── Meine Werte Section ───────────────────────────────── -->
+  <section id="werte">
+    <div class="werte-header reveal">
+      <span class="section-eyebrow">Was mir wichtig ist</span>
+      <h2 class="section-title">Meine Werte</h2>
+    </div>
+    <div class="werte-grid">
+
+      <!-- Echtheit -->
+      <div class="werte-item reveal">
+        <svg class="werte-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="22" cy="22" rx="20" ry="13" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="22" cy="22" r="5" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="22" cy="22" r="2" fill="currentColor"/>
+        </svg>
+        <div class="werte-divider"></div>
+        <h3 class="werte-title">Echtheit</h3>
+        <p class="werte-text">Keine gestellten Fotos. Ich halte fest was wirklich ist — echte Lachen, echte Tränen, echte Momente. Fotografie darf niemals eine Inszenierung sein, sondern ein Spiegel des Lebens.</p>
       </div>
-      <ul class="leistung-list">
-        <li class="reveal">
-          <svg class="leistung-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          <span>Bis zu 60 Minuten Shooting</span>
-        </li>
-        <li class="reveal reveal-delay-1">
-          <svg class="leistung-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          <span>Alle bearbeiteten Fotos — keine Auswahl-Galerie, du bekommst alles</span>
-        </li>
-        <li class="reveal reveal-delay-2">
-          <svg class="leistung-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          <span>Online-Galerie + analoge Prints + USB-Stick + Erinnerungsbox</span>
-        </li>
-        <li class="reveal reveal-delay-3">
-          <svg class="leistung-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          <span>Lieferzeit: ca. 1 Woche (digitale Bilder), Prints in 2–3 Wochen</span>
-        </li>
-        <li class="reveal reveal-delay-4">
-          <svg class="leistung-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          <span>Outdoor, Homestory oder Studio — ihr entscheidet</span>
-        </li>
-        <li class="reveal">
-          <svg class="leistung-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          <span>Im Umkreis von 100 km um Brome — auf Anfrage auch weiter</span>
-        </li>
-      </ul>
-      <div class="reveal" style="margin-top:40px;padding:32px;background:var(--beige);text-align:center;">
-        <p style="font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Investition</p>
-        <div style="display:flex;justify-content:center;gap:48px;flex-wrap:wrap;align-items:center;">
-          <div>
-            <p style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--brown-deep);">200 €</p>
-            <p style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--brown-mid);margin-top:4px;">Booking-Fee</p>
-            <p style="font-size:0.78rem;color:#5A4A38;margin-top:4px;">fällig bei Buchung</p>
-          </div>
-          <div style="width:1px;height:60px;background:var(--brown-light);"></div>
-          <div>
-            <p style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--brown-deep);">379 €</p>
-            <p style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--brown-mid);margin-top:4px;">Bildpaket</p>
-            <p style="font-size:0.78rem;color:#5A4A38;margin-top:4px;">fällig nach dem Shooting</p>
-          </div>
-        </div>
+
+      <!-- Nähe -->
+      <div class="werte-item reveal reveal-delay-1">
+        <svg class="werte-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 37 C22 37 5 27 5 16 C5 10.477 9.477 6 15 6 C18.09 6 20.86 7.49 22.6 9.8 C22.4 9.53 22.2 9.27 22 9.02 C23.74 6.71 26.51 5.22 29.6 5.22 C35.12 5.22 39.6 9.699 39.6 15.22 C39.6 26.22 22 37 22 37Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+        </svg>
+        <div class="werte-divider"></div>
+        <h3 class="werte-title">Nähe</h3>
+        <p class="werte-text">Ich nehme mir Zeit für dich. Bevor wir zusammenarbeiten lerne ich dich kennen — damit du dich vor meiner Kamera wirklich wohlfühlst. Vertrauen ist die Basis für alles.</p>
       </div>
+
+      <!-- Sorgfalt -->
+      <div class="werte-item reveal reveal-delay-2">
+        <svg class="werte-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="18" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M22 12 L22 22 L30 26" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="werte-divider"></div>
+        <h3 class="werte-title">Sorgfalt</h3>
+        <p class="werte-text">Jedes Bild wird mit Liebe bearbeitet. Ich liefere keine Masse, sondern Qualität — Fotos die du wirklich liebst und die noch in Jahren Gänsehaut machen.</p>
+      </div>
+
     </div>
   </section>
 
-  <!-- ─── Galerie ────────────────────────────────────────────── -->
-  <section id="gallery">
-    <div class="gallery-inner">
-      <div class="section-header reveal" style="margin-bottom: 40px;">
-        <span class="section-eyebrow">Eindrücke</span>
-        <h2 class="section-title">Momente die zählen</h2>
+  <!-- ─── Ausrüstung Section ────────────────────────────────── -->
+  <section id="ausruestung">
+    <div class="ausruestung-inner">
+      <div class="reveal">
+        <span class="section-eyebrow">Meine Ausrüstung</span>
       </div>
-      <div class="gallery-mosaic">
-        <div class="gallery-item reveal">
-          <img src="https://lenafunke.com/wp-content/uploads/2025/12/Familie-Hashagen-107-683x1024.jpg" alt="Familienfoto" loading="lazy" style="object-position: center 22%;" />
-        </div>
-        <div class="gallery-item reveal reveal-delay-1">
-          <img src="https://lenafunke.com/wp-content/uploads/2026/03/Jasmin-Florian-499-683x1024.jpg" alt="Familienfoto" loading="lazy" />
-        </div>
-        <div class="gallery-item reveal reveal-delay-2">
-          <img src="https://lenafunke.com/wp-content/uploads/2026/03/Jasmin-Florian-567-683x1024.jpg" alt="Familienfoto" loading="lazy" />
-        </div>
-      </div>
-      <div class="gallery-cta reveal">
-        <a href="https://www.instagram.com/fokusliebe_fotografie" target="_blank" rel="noopener noreferrer" class="btn-filled">
-          Weitere Momente auf Instagram
-        </a>
-      </div>
+      <p class="ausruestung-text reveal reveal-delay-1">
+        Ich arbeite mit professionellem Vollformat-Equipment und einem hochwertigen Objektivsortiment für jede Lichtsituation. Mein Schwerpunkt liegt dabei bewusst auf natürlichem Licht: kein Studio, keine harten Blitze, keine künstliche Atmosphäre. Das natürliche Licht — ob goldene Stunde, weiches Fensterlicht oder bewölkter Himmel — erzeugt genau die Wärme und Tiefe, die meine Bilder ausmacht.
+      </p>
     </div>
   </section>
 
-  <!-- ─── FAQ ───────────────────────────────────────────────── -->
-  <section id="faq">
-    <div class="faq-inner">
-      <div class="section-header reveal" style="margin-bottom: 0;">
-        <span class="section-eyebrow">Fragen &amp; Antworten</span>
-        <h2 class="section-title">Häufige Fragen</h2>
-      </div>
-      <div class="faq-list">
-
-        <div class="faq-item reveal">
-          <button class="faq-question" aria-expanded="false">
-            Was wenn die Kinder nicht mitmachen wollen?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Das ist völlig normal! Ich habe viel Erfahrung mit Kindern und nehme mir die Zeit — oft entstehen die schönsten Bilder in unbeobachteten Momenten, wenn niemand mehr an die Kamera denkt.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item reveal reveal-delay-1">
-          <button class="faq-question" aria-expanded="false">
-            Wo findet das Shooting statt?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Draußen an eurem Lieblingsort, im Park, am Feld — oder bei euch zuhause. Wir entscheiden gemeinsam, was am besten zu eurer Familie passt.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item reveal reveal-delay-2">
-          <button class="faq-question" aria-expanded="false">
-            Wie alt sollten die Kinder sein?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Familien-Shootings sind für alle Altersstufen geeignet — von Neugeborenen bis Teenager. Jedes Alter hat seinen ganz eigenen Zauber.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item reveal reveal-delay-3">
-          <button class="faq-question" aria-expanded="false">
-            Wie viele Fotos bekommen wir?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Ihr bekommt alle Fotos, die ich bearbeite — ohne Auswahl-Galerie, ohne Kompromisse. Wie viele das genau sind, hängt vom Shooting ab. Aber eins ist sicher: ihr bekommt alles.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item reveal reveal-delay-4">
-          <button class="faq-question" aria-expanded="false">
-            Wann ist die beste Zeit für ein Shooting?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Die goldene Stunde kurz vor Sonnenuntergang sorgt für das schönste Licht — aber wir finden gemeinsam den besten Zeitpunkt, der auch zu eurem Familienalltag passt.
-            </div>
-          </div>
-        </div>
-
-      </div>
+  <!-- ─── Testimonial ────────────────────────────────────────── -->
+  <section id="testimonial">
+    <div class="testimonial-inner reveal">
+      <div class="testimonial-mark" aria-hidden="true">"</div>
+      <blockquote class="testimonial-text">
+        Lena hat unsere Hochzeit so eingefangen, wie wir sie erlebt haben — voller Wärme, Emotion und Liebe. Wir sind noch immer überwältigt von jedem einzelnen Bild.
+      </blockquote>
+      <div class="testimonial-divider"></div>
+      <p class="testimonial-author">Sarah &amp; Markus &nbsp;·&nbsp; Hochzeit 2024</p>
     </div>
   </section>
 
@@ -997,10 +822,10 @@
     <div class="contact-inner">
       <p class="contact-eyebrow reveal">Kontakt</p>
       <h2 class="contact-title reveal reveal-delay-1">
-        Haltet eure Familie<br>für immer fest.
+        Lass uns gemeinsam arbeiten.
       </h2>
       <p class="contact-sub reveal reveal-delay-2">
-        Ich freue mich auf euch.
+        Ich freue mich darauf, dich kennenzulernen.
       </p>
       <div class="contact-btns reveal reveal-delay-3">
         <a href="mailto:lenafunkefotografie@outlook.de" class="btn-contact-primary">
@@ -1010,7 +835,7 @@
           </svg>
           E-Mail schreiben
         </a>
-        <a href="https://wa.me/491731851282" target="_blank" rel="noopener noreferrer" class="btn-contact-secondary">
+        <a href="https://wa.me/491234567890" target="_blank" rel="noopener noreferrer" class="btn-contact-secondary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
           </svg>
@@ -1018,7 +843,7 @@
         </a>
       </div>
       <p class="whatsapp-disclaimer reveal reveal-delay-4">
-        Mit Klick auf „WhatsApp" verlässt du diese Website und wirst zu WhatsApp weitergeleitet. Dabei werden Daten (u.&nbsp;a. deine Telefonnummer) an Meta Platforms Ireland Ltd. übertragen, auch in Drittländer außerhalb der EU. Weitere Informationen findest du in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
+        Mit Klick auf „WhatsApp" verlässt du diese Website und wirst zu WhatsApp weitergeleitet. Dabei werden Daten (u.&nbsp;a. deine Telefonnummer) an Meta Platforms Ireland Ltd. übertragen, auch in Drittländer außerhalb der EU. Weitere Informationen findest du in unserer <a href="#">Datenschutzerklärung</a>.
       </p>
       <p class="contact-location reveal reveal-delay-4">
         Aus Brome — für alle, die besondere Momente lieben.
@@ -1034,8 +859,8 @@
       </div>
       <div class="footer-links">
         <a href="https://www.instagram.com/fokusliebe_fotografie" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
       </div>
       <div class="footer-copy">
         <span>© 2026 Lena Funke Fotografie</span>
@@ -1090,37 +915,6 @@
       hamburger.classList.remove('open');
       document.body.style.overflow = '';
     }
-
-    // ── FAQ accordion ─────────────────────────────────────────
-    document.querySelectorAll('.faq-item').forEach(item => {
-      const btn = item.querySelector('.faq-question');
-      const answer = item.querySelector('.faq-answer');
-      btn.addEventListener('click', () => {
-        const isOpen = item.classList.contains('open');
-        // close all
-        document.querySelectorAll('.faq-item.open').forEach(openItem => {
-          openItem.classList.remove('open');
-          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-        });
-        // open clicked if it was closed
-        if (!isOpen) {
-          item.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-
-    // ── Smooth anchor scroll (offset for fixed nav) ───────────
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (!target) return;
-        e.preventDefault();
-        const offset = 80;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      });
-    });
   </script>
 </body>
 </html>
