@@ -203,6 +203,30 @@
     .footer-links a:hover { color: var(--gold); }
     .footer-copy { font-size: 0.72rem; color: rgba(250, 247, 242, 0.25); text-align: right; line-height: 1.6; }
 
+    /* ─── Agency Credit ─────────────────────────────────────────── */
+    .footer-credit {
+      background: #0e0e0e;
+      padding: 18px 24px;
+      text-align: center;
+    }
+    .footer-credit-label {
+      display: block;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.28);
+      margin-bottom: 5px;
+    }
+    .footer-credit-name {
+      font-size: 0.95rem;
+      color: rgba(250, 247, 242, 0.55);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .footer-credit-name:hover { color: rgba(250, 247, 242, 0.9); }
+    .footer-credit-name em { font-style: italic; }
+
     @media (max-width: 680px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -407,6 +431,11 @@
       </div>
     </div>
   </footer>
+
+  <div class="footer-credit">
+    <span class="footer-credit-label">Website erstellt von</span>
+    <a href="https://seitenreif.de" target="_blank" rel="noopener noreferrer" class="footer-credit-name">seiten<em>reif</em>.de</a>
+  </div>
 
   <script>
     const hamburger = document.getElementById('hamburger');

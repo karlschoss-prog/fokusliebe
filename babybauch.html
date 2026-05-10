@@ -701,6 +701,30 @@
     .footer-copy a { color: var(--gold); opacity: 0.7; transition: opacity var(--transition); }
     .footer-copy a:hover { opacity: 1; }
 
+    /* ─── Agency Credit ─────────────────────────────────────────── */
+    .footer-credit {
+      background: #0e0e0e;
+      padding: 18px 24px;
+      text-align: center;
+    }
+    .footer-credit-label {
+      display: block;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.28);
+      margin-bottom: 5px;
+    }
+    .footer-credit-name {
+      font-size: 0.95rem;
+      color: rgba(250, 247, 242, 0.55);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .footer-credit-name:hover { color: rgba(250, 247, 242, 0.9); }
+    .footer-credit-name em { font-style: italic; }
+
     /* ─── Keyframes ─────────────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
@@ -1022,6 +1046,11 @@
       </div>
     </div>
   </footer>
+
+  <div class="footer-credit">
+    <span class="footer-credit-label">Website erstellt von</span>
+    <a href="https://seitenreif.de" target="_blank" rel="noopener noreferrer" class="footer-credit-name">seiten<em>reif</em>.de</a>
+  </div>
 
   <!-- ─── JavaScript ─────────────────────────────────────────── -->
   <script>
